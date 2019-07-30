@@ -3,7 +3,7 @@ pragma solidity ^0.5.1;
 import "./SafeMath.sol";
 
 /*
-Person n°1
+Person n°1 - 13/04/2007
 */
 
 
