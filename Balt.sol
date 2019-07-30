@@ -9,11 +9,19 @@ Person n°1 - 13/04/2007
 
 contract Balt{
   
+  
   using SafeMath for uint256;
   address payable public beneficiary;
-
   uint256 public releaseTime;
 
+
+  function () external payable {
+  }
+
+  function getBalance() public returns (uint) {
+    return address(this).balance;
+  }
+    
   constructor(
     address payable _beneficiary,
     uint256 _releaseTime
