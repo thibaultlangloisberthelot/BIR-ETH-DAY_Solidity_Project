@@ -22,7 +22,7 @@ contract Balt{
   address payable public beneficiary;
   uint256 public releaseTime;
 
-  modifier OnlyBalt { require (msg.sender == 0xCae0f3170BD28A73E79752b26f787fBd09f157ef);
+  modifier OnlyBalt { require (msg.sender == //adress);
   _;
   }
 
