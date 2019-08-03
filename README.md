@@ -1,6 +1,6 @@
 # Birthday_ETH_Gifts
 
-Those (smart) contracts (2) will be use to send automaticaly some eth, to a specific date and address, after a certain amount of time.
+Those (smart) contracts (2) will be use to send automaticaly some eth, to a specific date and address (birthday), after a certain amount of time.
 I will use it as a "saving account" for some of my familly members (2).
 
 Here are some features of those (2) contract :
