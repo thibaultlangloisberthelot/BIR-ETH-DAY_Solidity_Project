@@ -1,40 +1,38 @@
-pragma solidity ^0.5.1;
-import "./SafeMath.sol";
+pragma solidity >=0.4.0 <0.9.99;
+import "browser/SafeMath.sol";
 
 
-contract Rosa{
-  
-  
-  using SafeMath for uint256;
-  address payable public beneficiary;
-  uint256 public releaseTime;
-  
-  
-  function () external payable {
-  }
-  
-  modifier OnlyRosa{ require (msg.sender == 0x78855021590B47eCEe86C4e158834CFD2DaB3AbC /*adress example*/);
-  _;
-  }
-  
-  function getBalance()  public view returns (uint) {
-    return address(this).balance;
-  }
-    
-  constructor( address payable _beneficiary, uint256 _releaseTime)
-    public
-    payable
-  {
-      
-  require(_releaseTime > block.timestamp);
-    beneficiary = _beneficiary;
-    releaseTime = _releaseTime;
-  }
+contract Rosa {
+using SafeMath for uint256;
 
-  function release() public {
-    require(block.timestamp >= releaseTime);
-    address(beneficiary).transfer(address(this).balance);
-  }
-  
+address payable public beneficiary;
+
+uint256 public releaseTime;
+
+modifier OnlyRosa {
+require ( msg.sender == 0x78855021590B47eCEe86C4e158834CFD2DaB3AbC /*adress example*/ );
+_;
+}
+
+
+constructor ( address payable _beneficiary, uint256 _releaseTime ) public payable {
+require ( _releaseTime > now );
+require ( _releaseTime > block.timestamp );
+beneficiary = _beneficiary;
+releaseTime = _releaseTime;
+}
+
+function getBalance() public view returns ( uint ) {
+return address ( this ).balance;
+}
+
+function release() public {
+require ( block.timestamp >= releaseTime );
+address ( beneficiary ).transfer ( address ( this ).balance );
+}
+
+function () external payable {
+
+}
 }
 
