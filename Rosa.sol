@@ -14,7 +14,6 @@ require ( msg.sender == 0x78855021590B47eCEe86C4e158834CFD2DaB3AbC /*adress exam
 _;
 }
 
-
 constructor ( address payable _beneficiary, uint256 _releaseTime ) public payable {
 require ( _releaseTime > now );
 require ( _releaseTime > block.timestamp );
@@ -26,7 +25,7 @@ function getBalance() public view returns ( uint ) {
 return address ( this ).balance;
 }
 
-function release() public {
+function release() external OnlyRosa {
 require ( block.timestamp >= releaseTime );
 address ( beneficiary ).transfer ( address ( this ).balance );
 }
@@ -35,4 +34,3 @@ function () external payable {
 
 }
 }
-
