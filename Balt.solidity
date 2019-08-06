@@ -2,14 +2,14 @@ pragma solidity >=0.4.0 <0.9.99;
 import "browser/SafeMath.sol";
 
 
-contract Rosa {
+contract Balt {
 using SafeMath for uint256;
 
 address payable public beneficiary;
 
 uint256 public releaseTime;
 
-modifier OnlyRosa {
+modifier OnlyBalt {
 require ( msg.sender == 0xCae0f3170BD28A73E79752b26f787fBd09f157ef /*adress example*/ );
 _;
 }
@@ -26,7 +26,7 @@ function getBalance() public view returns ( uint ) {
 return address ( this ).balance;
 }
 
-function release() public {
+function release() external OnlyBalt {
 require ( block.timestamp >= releaseTime );
 address ( beneficiary ).transfer ( address ( this ).balance );
 }
